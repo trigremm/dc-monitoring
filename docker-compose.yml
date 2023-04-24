@@ -20,6 +20,7 @@ services:
     image: grafana/grafana:main-ubuntu
     platform: linux/amd64
     container_name: grafana
+    user: "472:472"
     ports:
       - "3000:3000"
     volumes:
