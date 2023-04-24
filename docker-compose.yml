@@ -31,7 +31,7 @@ services:
       - monitoring
 
   cadvisor:
-    image: google/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:v0.41.0
     platform: linux/amd64
     container_name: cadvisor
     volumes:
@@ -40,7 +40,6 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /sys/fs/cgroup/cpu:/sys/fs/cgroup/cpu:ro # ubuntu 22.04
     ports:
       - "9080:8080"
     networks:
