@@ -1,0 +1,5 @@
+Open Grafana by navigating to http://localhost:3000 in your web browser. Log in with the default username admin and password admin.
+
+Add a Prometheus data source to Grafana with the URL http://prometheus:9090.
+
+Create a new dashboard in Grafana and add panels with metrics and alerts for the resource usage of your MongoDB container. For example, you can create an alert for high CPU usage with the metric container_cpu_usage_seconds_total{container="mongodb"}.
