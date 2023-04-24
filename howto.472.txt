@@ -1,0 +1,2 @@
+sudo mkdir -p /var/apps/dc-monitoring/.docker-storage/grafana/
+sudo chown -R 472:472 /var/apps/dc-monitoring/.docker-storage/grafana/
