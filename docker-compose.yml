@@ -39,6 +39,7 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /sys/fs/cgroup/cpu:/sys/fs/cgroup/cpu:ro # ubuntu 22.04
     ports:
       - "9080:8080"
