@@ -23,7 +23,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - .docker-storage/grafana/:/var/lib/grafana
     depends_on:
       - prometheus
     networks:
@@ -46,6 +46,3 @@ services:
 networks:
   monitoring:
     name: monitoring
-
-volumes:
-  grafana-storage:
