@@ -10,7 +10,7 @@ services:
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
-      - "9090:9090"
+      - "127.0.0.1:9090:9090"
     depends_on:
       - cadvisor
     networks:
@@ -22,7 +22,7 @@ services:
     container_name: grafana
     user: "472:472"
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     volumes:
       - .docker-storage/grafana/:/var/lib/grafana
     depends_on:
@@ -41,7 +41,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     ports:
-      - "9080:8080"
+      - "127.0.0.1:9080:8080"
     networks:
       - monitoring
 
