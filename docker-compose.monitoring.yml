@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  prometheus:
+    image: prom/prometheus:main
+    platform: linux/amd64
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+    depends_on:
+      - cadvisor
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:main-ubuntu
+    platform: linux/amd64
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring
+
+  cadvisor:
+    image: google/cadvisor:latest
+    platform: linux/amd64
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8080:8080"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    name: monitoring
+
+volumes:
+  grafana-storage:
